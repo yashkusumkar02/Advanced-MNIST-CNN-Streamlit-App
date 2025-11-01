@@ -91,6 +91,7 @@ python train_model.py
 
 > **Note:** Ensure that you have `mnist_train.csv` and `mnist_test.csv` locally before training.  
 > Do **not** commit these dataset files to GitHub.
+> https://www.kaggle.com/datasets/oddrationale/mnist-in-csv/data
 
 ---
 
