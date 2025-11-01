@@ -1,0 +1,85 @@
+/* ------------------------------------------------------------------ */
+/* 1. ANIMATED BACKGROUND FOR THE MAIN APP CONTAINER (.stApp) */
+/* ------------------------------------------------------------------ */
+
+/* Target the main app container more aggressively */
+.stApp {
+    background: linear-gradient(
+        -45deg,
+        #3d1e6d, /* Darker Purple base, adjusted for better blend */
+        #7a206a, /* Deeper Magenta */
+        #2a82b3, /* Stronger Cyan */
+        #2ac78c  /* Vibrant Green */
+    ) !important; /* Use !important to ensure override */
+    
+    background-size: 400% 400% !important;
+    animation: gradientShift 20s ease infinite !important;
+    color: #f0f0f0 !important; /* Ensure text is light */
+}
+
+/* Keyframes for animation */
+@keyframes gradientShift {
+    0% { background-position: 0% 50% !important; }
+    50% { background-position: 100% 50% !important; }
+    100% { background-position: 0% 50% !important; }
+}
+
+/* ------------------------------------------------------------------ */
+/* 2. UI FIXES (Invisible Icons, Sidebar, Text Color, Canvas) */
+/* ------------------------------------------------------------------ */
+
+/* Fix: Targets all SVG elements inside the app to make them light/white */
+/* This is crucial for the canvas toolbar icons and other Streamlit icons */
+svg {
+    filter: invert(100%) hue-rotate(180deg) brightness(1.5) !important;
+}
+
+/* Ensure specific Streamlit components also inherit light text */
+h1, h2, h3, h4, .stMarkdown, p, label, .stMetric .value, .stMetric .label, .stMetric .delta {
+    color: #f0f0f0 !important;
+}
+
+/* Sidebar Styling */
+[data-testid="stSidebar"] {
+    background: rgba(0, 0, 0, 0.5) !important; /* Slightly more opaque */
+    border-right: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Fix: Ensure the drawing canvas itself has a black background */
+/* This is important for drawable-canvas component */
+.streamlit-drawable-canvas canvas {
+    background-color: #000000 !important;
+}
+
+/* Canvas buttons styling (if the general SVG filter isn't enough) */
+/* This directly targets the drawable-canvas control elements */
+div[data-testid="stDrawableCanvas"] div[role="group"] button svg {
+    filter: invert(100%) brightness(2) !important; /* Even brighter white */
+}
+
+/* Customize info/success boxes for better contrast */
+[data-testid="stAlert"] > div {
+    background-color: rgba(255, 255, 255, 0.15) !important; /* Slightly more visible */
+    color: #ffffff !important;
+    border: none !important;
+    border-left: 5px solid !important;
+}
+
+.stAlert.success { border-left-color: #28a745 !important; }
+.stAlert.info { border-left-color: #17a2b8 !important; }
+
+/* Ensure Streamlit's default container backgrounds are transparent where needed */
+.stApp > header, .main, .block-container {
+    background-color: transparent !important;
+}
+
+/* Remove default padding from main content to let gradient show */
+.block-container {
+    padding-top: 2rem !important;
+    padding-bottom: 2rem !important;
+}
+
+/* Ensure the deploy button also has light text */
+.stApp header a { /* Targets the "Deploy" link */
+    color: #f0f0f0 !important;
+}
