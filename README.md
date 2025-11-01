@@ -1,5 +1,9 @@
 # ✨ Advanced Handwritten Digit Recognizer
 
+
+<img width="1919" height="968" alt="image" src="https://github.com/user-attachments/assets/c9f29767-705c-4ebc-88cf-fdaeee6995c7" />
+
+
 An interactive **web application** built with **Streamlit** and **TensorFlow/Keras** for recognizing handwritten digits (**0–9**).  
 It features an **Advanced Convolutional Neural Network (CNN)** trained on the **MNIST dataset**, along with an **interactive drawing canvas** for real-time digit predictions.
 
